@@ -13,6 +13,8 @@ module "vpc" {
   single_nat_gateway            = true
   enable_dns_hostnames          = true
   enable_dns_support            = true
+  
+}
 
 module "alb_sg" {
   source = "terraform-in-action/sg/aws"
@@ -23,7 +25,9 @@ module "alb_sg" {
       cidr_blocks = ["0.0.0.0/0"]
     }
   ]
+
 }
+
 module "web_sg" {
   source = "terraform-in-action/sg/aws"
   vpc_id = module.vpc.vpc_id
@@ -32,8 +36,9 @@ module "web_sg" {
       port        = 80
       security_groups = module.alb_sg.security_groups.id
     }
-
   ]
+
+}
 
 module "db_sg" {
   source = "terraform-in-action/sg/aws"
@@ -44,10 +49,7 @@ module "db_sg" {
       security_groups = module.web_sg.security_group.id
     }
   ]
+
 } 
-}
 
-
-
-}
 
