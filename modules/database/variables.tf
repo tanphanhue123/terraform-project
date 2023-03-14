@@ -9,4 +9,3 @@ variable "vpc" {
 variable "sg" {
   type = any
 }
-

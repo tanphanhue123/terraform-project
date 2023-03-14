@@ -4,12 +4,10 @@ variable "project" {
 
 variable "vpc" {
   type = any
-
 }
 
 variable "sg" {
   type = any
-
 }
 
 variable "db_config" {
@@ -22,5 +20,4 @@ variable "db_config" {
       port     = string
     }
   )
-  
 }
